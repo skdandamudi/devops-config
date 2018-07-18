@@ -1,15 +1,13 @@
 #!/bin/bash
 
+SHUTDOWN_WAIT=10
 
-#SHUTDOWN_WAIT is wait time in seconds for java proccess to stop
-SHUTDOWN_WAIT=8
-
- pid=`ps -fe | grep {{jenkins_port}}  | grep -v grep | tr -s " "|cut -d" " -f2`
+ pid=`ps -fe | grep 8080  | grep -v grep | tr -s " "|cut -d" " -f2`
 
   if [ -n "$pid" ]
 
   then
-    echo -e "\e[00;31mStoping Jenkins running on port {{jenkins_port}}\e[00m"
+    echo -e "\e[00;31mStoping Jenkins running on port 8080\e[00m"
 
 
     let kwait=$SHUTDOWN_WAIT
@@ -27,7 +25,7 @@ SHUTDOWN_WAIT=8
       kill -9 $pid
     fi
 
-    pid=`ps -fe | grep {{jenkins_port}}  | grep -v grep | tr -s " "|cut -d" " -f2`
+    pid=`ps -fe | grep 8080  | grep -v grep | tr -s " "|cut -d" " -f2`
 
     if [ -n "$pid" ]
       then
