@@ -43,11 +43,76 @@ sudo  -u jenkins /opt/jenkins/bin/stop-jenkins.sh
 
 sudo  -u jenkins /opt/jenkins/bin/start-jenkins.sh
 
+sleep 30
+
+url='http://localhost:8080/'
+attempts=5
+timeout=5
+
+echo "Checking status of $url."
+
+for (( i=1; i<=$attempts; i++ ))
+do
+  code=`curl -sL --connect-timeout 20 --max-time 30 -w "%{http_code}\\n" "$url" -o /dev/null`
+
+  if [ "$code" = "200" ]; then
+    
+    break
+  else
+    sleep $timeout
+  fi
+done
+
+
+
 wget -O /opt/jenkins/jenkins-cli.jar http://localhost:8080/jnlpJars/jenkins-cli.jar
 
 while read plugin; do
   echo $plugin
   java -jar /opt/jenkins/jenkins-cli.jar -s http://localhost:8080/jenkins/ install-plugin $plugin
+  sleep 5 
 done < /var/jenkins/data/plugins.txt
 
+
+
+#==========
+# Gradle
+#==========
+curl -skL -o /tmp/gradle-bin.zip https://services.gradle.org/distributions/gradle-4.7-bin.zip && \
+    unzip -q /tmp/gradle-bin.zip -d /usr/share && \
+    mv /usr/share/gradle-$GRADLE_VERSION /usr/share/gradle && \
+    ln -sf /usr/share/gradle/bin/gradle /usr/local/bin/gradle
+    
+#==========
+# Maven
+#==========
+
+
+RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-3.5.3-bin.tar.gz | tar xzf - -C /usr/share \
+  && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
+  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
+  
+  
+ #==========
+# Jmete
+#==========
+
+RUN mkdir -p /opt/jmeter \
+      && wget -O - "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-4.0.tgz" \
+      | tar -xz --strip=1 -C /opt/jmeter
+
+
+ sudo -u jenkins curl -L https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | /bin/bash 
+    
+for (( i=1; i<=$attempts; i++ ))
+do
+  code=`curl -sL --connect-timeout 20 --max-time 30 -w "%{http_code}\\n" "$url" -o /dev/null`
+
+  if [ "$code" = "200" ]; then
+    
+    break
+  else
+    sleep $timeout
+  fi
+done
 
