@@ -19,9 +19,7 @@ echo "jenkins   ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 mkdir -p /opt/jenkins/bin
 mkdir -p /var/jenkins /var/jenkins/data /var/jenkins/logs
- 
-chown -R jenkins:jenkins /opt/jenkins
-chown -R jenkins:jenkins /var/jenkins
+
  
 
 export JENKINS_VERSION=2.121.2
@@ -35,7 +33,9 @@ wget -O /opt/jenkins/bin/stop-jenkins.sh https://raw.githubusercontent.com/navit
 wget -O /var/jenkins/data/plugins.txt https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/jenkins/plugins.txt
 
 
+ 
 chown -R jenkins:jenkins /opt/jenkins
+chown -R jenkins:jenkins /var/jenkins
 
 chmod  755 /opt/jenkins/bin/*.sh
 
