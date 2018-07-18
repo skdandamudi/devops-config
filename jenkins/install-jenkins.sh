@@ -80,7 +80,7 @@ done < /var/jenkins/data/plugins.txt
 #==========
 curl -skL -o /tmp/gradle-bin.zip https://services.gradle.org/distributions/gradle-4.7-bin.zip && \
     unzip -q /tmp/gradle-bin.zip -d /usr/share && \
-    mv /usr/share/gradle-$GRADLE_VERSION /usr/share/gradle && \
+    mv /usr/share/gradle-4.7 /usr/share/gradle && \
     ln -sf /usr/share/gradle/bin/gradle /usr/local/bin/gradle
     
 #==========
