@@ -88,8 +88,8 @@ curl -skL -o /tmp/gradle-bin.zip https://services.gradle.org/distributions/gradl
 #==========
 
 
-RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-3.5.3-bin.tar.gz | tar xzf - -C /usr/share \
-  && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
+RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz | tar xzf - -C /usr/share \
+  && mv /usr/share/apache-maven-3.5.3 /usr/share/maven \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
   
   
@@ -101,15 +101,18 @@ RUN mkdir -p /opt/jmeter \
       && wget -O - "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-4.0.tgz" \
       | tar -xz --strip=1 -C /opt/jmeter
 
+sudo  -u jenkins /opt/jenkins/bin/stop-jenkins.sh
 
- sudo -u jenkins curl -L https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | /bin/bash 
+sudo  -u jenkins /opt/jenkins/bin/start-jenkins.sh
+
+sleep 30
     
 for (( i=1; i<=$attempts; i++ ))
 do
   code=`curl -sL --connect-timeout 20 --max-time 30 -w "%{http_code}\\n" "$url" -o /dev/null`
 
   if [ "$code" = "200" ]; then
-    
+    echo "Jenkins Restarted"
     break
   else
     sleep $timeout
