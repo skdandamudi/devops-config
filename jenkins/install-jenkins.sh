@@ -88,7 +88,7 @@ curl -skL -o /tmp/gradle-bin.zip https://services.gradle.org/distributions/gradl
 #==========
 
 
-RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz | tar xzf - -C /usr/share \
+curl -fsSL http://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-maven-3.5.3 /usr/share/maven \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
   
