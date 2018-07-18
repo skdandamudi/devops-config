@@ -69,7 +69,7 @@ wget -O /opt/jenkins/jenkins-cli.jar http://localhost:8080/jnlpJars/jenkins-cli.
 
 while read plugin; do
   echo $plugin
-  java -jar /opt/jenkins/jenkins-cli.jar -s http://localhost:8080/jenkins/ install-plugin $plugin
+  java -jar /opt/jenkins/jenkins-cli.jar -s http://localhost:8080/ install-plugin $plugin
   sleep 5 
 done < /var/jenkins/data/plugins.txt
 
