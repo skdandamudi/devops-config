@@ -70,7 +70,7 @@ wget -O /opt/jenkins/jenkins-cli.jar http://localhost:8080/jnlpJars/jenkins-cli.
 while read plugin; do
   echo $plugin
   java -jar /opt/jenkins/jenkins-cli.jar -s http://localhost:8080/ install-plugin $plugin
-  sleep 5 
+  
 done < /var/jenkins/data/plugins.txt
 
 
@@ -97,7 +97,7 @@ curl -fsSL http://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-ma
 # Jmete
 #==========
 
-RUN mkdir -p /opt/jmeter \
+mkdir -p /opt/jmeter \
       && wget -O - "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-4.0.tgz" \
       | tar -xz --strip=1 -C /opt/jmeter
 
