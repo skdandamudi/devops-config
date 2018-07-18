@@ -1,4 +1,3 @@
-sch
 ws-cleanup
 blueocean-commons
 mercurial
