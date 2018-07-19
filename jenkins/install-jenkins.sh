@@ -91,22 +91,8 @@ sudo  -u jenkins /opt/jenkins/bin/stop-jenkins.sh
 
 sudo  -u jenkins /opt/jenkins/bin/start-jenkins.sh
 
-sleep 30
-attempts=5
-timeout=5
-url='http://localhost:8080/'
-    
-for (( i=1; i<=$attempts; i++ ))
-do
-  code=`curl -sL --connect-timeout 20 --max-time 30 -w "%{http_code}\\n" "$url" -o /dev/null`
+sleep 5
 
-  if [ "$code" = "200" ]; then
-    echo "Jenkins Restarted"
-    break
-  else
-    sleep $timeout
-  fi
-done
 
 ##Instal nvm
 #sudo -u jenkins curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
