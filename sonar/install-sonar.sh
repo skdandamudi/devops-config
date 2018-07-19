@@ -10,7 +10,9 @@ yum remove -y java
 
 yum install -y java-1.8.0-openjdk-devel
 
-groupadd -g 1000 sonar
-useradd -u 1000 -g 1000 sonar
 
-echo "sonar   ALL=(ALL:ALL) ALL" >> /etc/sudoers
+
+wget -O /etc/yum.repos.d/sonar.repo http://downloads.sourceforge.net/project/sonar-pkg/rpm/sonar.repo
+
+yum install sonar
+
