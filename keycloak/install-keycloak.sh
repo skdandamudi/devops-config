@@ -10,4 +10,25 @@ yum remove -y java
 
 yum install -y java-1.8.0-openjdk-devel
 
+groupadd -g 1000 keycloak
+useradd -u 1000 -g 1000 keycloak
+
+echo "keycloak   ALL=(ALL:ALL) ALL" >> /etc/sudoers
+
 wget -O /tmp/keycloak.zip https://downloads.jboss.org/keycloak/4.1.0.Final/keycloak-4.1.0.Final.zip
+
+unzip /tmp/keycloak.zip -d /opt
+
+mv /opt/keycloak-4.1.0.Final /opt/keycloak
+
+chown -R keycloak:keycloak /opt/keycloak
+
+wget -O /opt/keycloak/start.sh https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/keycloak/start.sh
+
+chmod 755 /opt/keycloak/start.sh 
+
+chown -R keycloak:keycloak /opt/keycloak
+
+
+
+sudo  -u keycloak /opt/keycloak/start.sh 
