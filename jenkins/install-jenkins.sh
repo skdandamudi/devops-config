@@ -87,7 +87,7 @@ chown -R jenkins:jenkins /var/jenkins
 curl -skL -o /tmp/gradle-bin.zip https://services.gradle.org/distributions/gradle-4.7-bin.zip && \
     unzip -q /tmp/gradle-bin.zip -d /usr/share && \
     mv /usr/share/gradle-4.7 /usr/share/gradle && \
-    ln -sf /usr/share/gradle/bin/gradle /usr/local/bin/gradle
+    ln -sf /usr/share/gradle/bin/gradle /usr/bin/gradle
     
 #==========
 # Maven
@@ -124,4 +124,7 @@ do
     sleep $timeout
   fi
 done
+
+##Instal nvm
+sudo -u jenkins curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 
