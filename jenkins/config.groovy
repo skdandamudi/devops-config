@@ -1,20 +1,25 @@
-
 // imports
-import jenkins.model.Jenkins
+import jenkins.model.*
+import jenkins.security.s2m.*
 
 // Sets executors count
 Jenkins jenkins = Jenkins.getInstance()
-jenkins.setNumExecutors(6)
-instance.setSlaveAgentPort([50000])
+jenkins.setNumExecutors(8)
+
+jenkins.getDescriptor("jenkins.CLI").get().setEnabled(false)
+
+
+jenkins.injector.getInstance(AdminWhitelistRule.class).setMasterKillSwitch(false);
+
+// Disable jnlp
+jenkins.setSlaveAgentPort(-1);
+
+// Disable old Non-Encrypted protocols
+HashSet<String> newProtocols = new HashSet<>(jenkins.getAgentProtocols());
+newProtocols.removeAll(Arrays.asList(
+        "JNLP3-connect", "JNLP2-connect", "JNLP-connect", "CLI-connect"
+));
+jenkins.setAgentProtocols(newProtocols);
+
+
 jenkins.save()
-
-//Set the administrator email address
-def jenkinsLocationConfiguration = JenkinsLocationConfiguration.get()
-jenkinsLocationConfiguration.setAdminAddress("sudheer.dandamudi@navitas-tech.com")
-jenkinsLocationConfiguration.save()
-
-//set Git global config
-def gitConfig = inst.getDescriptor("hudson.plugins.git.GitSCM")
-gitConfig.setGlobalConfigName("sscdbot")
-gitConfig.setGlobalConfigEmail("steadystatecd@gmail.com")
-gitConfig.save()
