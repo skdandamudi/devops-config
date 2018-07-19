@@ -94,7 +94,7 @@ sudo  -u jenkins /opt/jenkins/bin/start-jenkins.sh
 sleep 5
 
 
-wget -O /var/jenkins/data/config.groovy.txt https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/jenkins/config.groovy
+wget -O /var/jenkins/data/config.groovy https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/jenkins/config.groovy
 
 ##Instal nvm
 #sudo -u jenkins curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
