@@ -92,6 +92,8 @@ sudo  -u jenkins /opt/jenkins/bin/stop-jenkins.sh
 sudo  -u jenkins /opt/jenkins/bin/start-jenkins.sh
 
 sleep 30
+attempts=5
+timeout=5
     
 for (( i=1; i<=$attempts; i++ ))
 do
