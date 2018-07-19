@@ -18,7 +18,7 @@ echo "jenkins   ALL=(ALL:ALL) ALL" >> /etc/sudoers
 #install software
 
 mkdir -p /opt/jenkins/bin
-mkdir -p /var/jenkins /var/jenkins/data /var/jenkins/logs
+mkdir -p /var/jenkins /var/jenkins/data /var/jenkins/logs /var/jenkins/data/plugins
 
  
 
@@ -41,27 +41,7 @@ chmod  755 /opt/jenkins/bin/*.sh
 
 sudo  -u jenkins /opt/jenkins/bin/stop-jenkins.sh
 
-sudo  -u jenkins /opt/jenkins/bin/start-jenkins.sh
-
-sleep 30
-
-url='http://localhost:8080/'
-attempts=5
-timeout=5
-
-echo "Checking status of $url."
-
-for (( i=1; i<=$attempts; i++ ))
-do
-  code=`curl -sL --connect-timeout 20 --max-time 30 -w "%{http_code}\\n" "$url" -o /dev/null`
-
-  if [ "$code" = "200" ]; then
-    
-    break
-  else
-    sleep $timeout
-  fi
-done
+sleep 10
 
 
 plugin_dir=/var/jenkins/data/plugins
@@ -126,5 +106,5 @@ do
 done
 
 ##Instal nvm
-sudo -u jenkins curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+#sudo -u jenkins curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 
