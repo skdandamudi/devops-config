@@ -79,6 +79,7 @@ if [ -f ${plugin_dir}/$plugin.hpi -o -f ${plugin_dir}/$plugin.jpi ]; then
 
 done < /var/jenkins/data/plugins.txt
 
+chown -R jenkins:jenkins /var/jenkins
 
 #==========
 # Gradle
