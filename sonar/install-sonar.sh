@@ -16,8 +16,11 @@ wget -O /etc/yum.repos.d/sonar.repo http://downloads.sourceforge.net/project/son
 
 yum -y install sonar
 
-service sonar start
+yum -y  install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+
 
 chkconfig sonar on
+chkconfig postgresql on 
+service postgresql initdb
 
 
