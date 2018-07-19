@@ -64,15 +64,20 @@ do
 done
 
 
-
-wget -O /opt/jenkins/jenkins-cli.jar http://localhost:8080/jnlpJars/jenkins-cli.jar
+plugin_dir=/var/jenkins/data/plugins
+ 
 
 while read plugin; do
-  echo $plugin
-  java -jar /opt/jenkins/jenkins-cli.jar -s http://localhost:8080/ install-plugin $plugin
-  
-done < /var/jenkins/data/plugins.txt
 
+
+if [ -f ${plugin_dir}/$plugin.hpi -o -f ${plugin_dir}/$plugin.jpi ]; then
+    echo "Skipped: $plugin (already installed)"
+  else
+    echo "Installing: $plugin"
+    curl -L --silent --output ${plugin_dir}/$plugin.hpi  https://updates.jenkins-ci.org/latest/$plugin.hpi
+  fi
+
+done < /var/jenkins/data/plugins.txt
 
 
 #==========
@@ -94,7 +99,7 @@ curl -fsSL http://archive.apache.org/dist/maven/maven-3/3.5.3/binaries/apache-ma
   
   
  #==========
-# Jmete
+# Jmeter
 #==========
 
 mkdir -p /opt/jmeter \
