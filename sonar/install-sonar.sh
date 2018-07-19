@@ -22,5 +22,7 @@ yum -y  install postgresql postgresql-server postgresql-devel postgresql-contrib
 chkconfig sonar on
 chkconfig postgresql on 
 service postgresql initdb
+service postgresql start
+service postgresql status
 
 
