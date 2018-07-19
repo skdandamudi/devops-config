@@ -1,6 +1,8 @@
 // imports
 import jenkins.model.*
 import jenkins.security.s2m.*
+import hudson.security.csrf.DefaultCrumbIssuer
+
 
 // Sets executors count
 Jenkins jenkins = Jenkins.getInstance()
@@ -23,3 +25,21 @@ jenkins.setAgentProtocols(newProtocols);
 
 
 jenkins.save()
+
+
+if(!Jenkins.instance.isQuietingDown()) {
+   
+    if(jenkins.getCrumbIssuer() == null) {
+        jenkins.setCrumbIssuer(new DefaultCrumbIssuer(true))
+        jenkins.save()
+        println 'CSRF Protection configuration has changed.  Enabled CSRF Protection.'
+    }
+    else {
+        println 'Nothing changed.  CSRF Protection already configured.'
+    }
+}
+else {
+    println "Shutdown mode enabled.  Configure CSRF protection SKIPPED."
+}
+
+
