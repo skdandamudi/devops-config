@@ -24,5 +24,6 @@ chkconfig postgresql on
 service postgresql initdb
 service postgresql start
 service postgresql status
+service sonar start
 
 
