@@ -96,6 +96,10 @@ sleep 5
 
 wget -O /var/jenkins/data/config.groovy https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/jenkins/config.groovy
 
+yum install -y docker
+service docker start
+usermod -a -G docker jenkins
+
 ##Instal nvm
 #sudo -u jenkins curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
