@@ -6,6 +6,11 @@ yum -y update
 yum -y install git openssh-client curl unzip bash ttf-dejavu coreutils tini gcc gcc-c++ make 
 yum install -y epel-release wget openssl
 
+yum install -y docker
+
+service docker start
+
+
 yum remove -y java
 
 yum install -y java-1.8.0-openjdk-devel
@@ -15,6 +20,8 @@ useradd -u 1000 -g 1000 jenkins
 
 echo "jenkins   ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
+
+usermod -a -G docker jenkins
 #install software
 
 mkdir -p /opt/jenkins/bin
