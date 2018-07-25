@@ -28,6 +28,7 @@ service postgresql95 start
 
 wget -O /tmp/pg.sql https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/pg.sql
 
+sudo -u postgres psql -f pg.sql
 
 
 wget -O /tmp/pg_hba.conf https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/pg_hba.conf
