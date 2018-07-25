@@ -54,3 +54,13 @@ mv /tmp/kong.conf.default /etc/kong/kong.conf.default
 /usr/local/bin/kong health
 
 
+wget -O /tmp/nvm.sh https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/install-nvm.sh
+chmod 755 /tmp/nvm.sh
+
+/tmp/nvm.sh
+
+su - ec2-user -c "npm install forever -g"
+
+su - ec2-user -c "git clone https://github.com/pantsel/konga.git"
+su - ec2-user -c "cd konga; npm install; forever start app.js"
+
