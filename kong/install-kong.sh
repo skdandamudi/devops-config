@@ -5,7 +5,7 @@ set -o pipefail
 
 yum -y update
 yum -y install git openssh-client curl unzip bash ttf-dejavu coreutils tini gcc gcc-c++ make 
-yum install -y epel-release wget openssl
+yum install -y epel-release wget openssl epel-release
 
 yum remove -y java
 
@@ -23,3 +23,6 @@ service postgresql95 start
 
 
 wget -O kong-community-edition-0.14.0.aws.rpm https://bintray.com/kong/kong-community-edition-aws/download_file?file_path=dists/kong-community-edition-0.14.0.aws.rpm
+
+
+yum install -y kong-community-edition-0.14.0.aws.rpm --nogpgcheck
