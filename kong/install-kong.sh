@@ -29,12 +29,6 @@ service postgresql95 start
 wget -O /tmp/pg.sql https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/pg.sql
 
 
-wget -O kong-community-edition-0.14.0.aws.rpm https://bintray.com/kong/kong-community-edition-aws/download_file?file_path=dists/kong-community-edition-0.14.0.aws.rpm
-
-
-yum install -y kong-community-edition-0.14.0.aws.rpm --nogpgcheck
-
-
 
 wget -O /tmp/pg_hba.conf https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/pg_hba.conf
 
@@ -43,3 +37,19 @@ chown postgres:postgres /var/lib/pgsql95/data/pg_hba.conf
 
 service postgresql95 stop
 service postgresql95 start
+
+
+wget -O kong-community-edition-0.14.0.aws.rpm https://bintray.com/kong/kong-community-edition-aws/download_file?file_path=dists/kong-community-edition-0.14.0.aws.rpm
+
+
+yum install -y kong-community-edition-0.14.0.aws.rpm --nogpgcheck
+
+wget -O /tmp/kong.conf.default https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/kong.conf.default
+mv /tmp/kong.conf.default /etc/kong/kong.conf.default
+
+# Run migrations and start kong
+/usr/local/bin/kong migrations up -c /etc/kong/kong.conf.default
+/usr/local/bin/kong start -c /etc/kong/kong.conf.default
+/usr/local/bin/kong health
+
+
