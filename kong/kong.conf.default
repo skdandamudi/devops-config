@@ -1,1 +1,7 @@
 
+pg_host = 127.0.0.1             # The PostgreSQL host to connect to.
+pg_port = 5432                  # The port to connect to.
+pg_user = kong                  # The username to authenticate if required.
+pg_password = kong                  # The password to authenticate if required.
+pg_database = kong              # The database name to connect to.
+admin_listen = 127.0.0.1:8001, 127.0.0.1:8444 ssl
