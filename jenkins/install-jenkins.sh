@@ -107,8 +107,10 @@ yum install -y docker
 service docker start
 usermod -a -G docker jenkins
 
-##Instal nvm
-#sudo -u jenkins curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+wget -O /tmp/nvm.sh https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/install-nvm.sh
+chmod 755 /tmp/nvm.sh
+
+/tmp/nvm.sh
 
 sudo  -u jenkins echo "aws ecr get-login --region us-east-1 | sed -e 's/-e none//g'" > /home/jenkins/ecr-login.sh
 chmod 755 /home/jenkins/ecr-login.sh
@@ -118,3 +120,5 @@ chmod 755 /home/jenkins/ecr-login.sh
 curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy | sudo tee /usr/bin/ecs-deploy
 
 chmod +x /usr/bin/ecs-deploy
+
+
