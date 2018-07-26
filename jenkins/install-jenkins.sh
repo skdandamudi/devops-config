@@ -114,5 +114,7 @@ sudo  -u jenkins echo "aws ecr get-login --region us-east-1 | sed -e 's/-e none/
 chmod 755 /home/jenkins/ecr-login.sh
 
 
-su - jenkins -c "git clone https://github.com/navitastech-rfad/ecs-deploy.git"
- 
+
+curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy | sudo tee /usr/bin/ecs-deploy
+
+chmod +x /usr/bin/ecs-deploy
