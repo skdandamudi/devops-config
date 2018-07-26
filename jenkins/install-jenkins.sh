@@ -107,7 +107,7 @@ yum install -y docker
 service docker start
 usermod -a -G docker jenkins
 
-wget -O /tmp/nvm.sh https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/install-nvm.sh
+wget -O /tmp/nvm.sh https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/jenkins/install_nvm.sh
 chmod 755 /tmp/nvm.sh
 
 /tmp/nvm.sh
