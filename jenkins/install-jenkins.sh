@@ -110,3 +110,7 @@ usermod -a -G docker jenkins
 ##Instal nvm
 #sudo -u jenkins curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
+sudo  -u jenkins echo "aws ecr get-login --region us-east-1 | sed -e 's/-e none//g'" > /home/jenkins/ecr-login.sh
+chmod 755 /home/jenkins/ecr-login.sh
+
+
