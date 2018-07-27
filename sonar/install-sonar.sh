@@ -83,7 +83,7 @@ wget -O /opt/sonarqube/conf/sonar.properties  https://raw.githubusercontent.com/
 chown -R sonar:sonar /opt/sonarqube
 
 
-su - ec2-sonar -c "/opt/sonarqube/bin/linux-x86-64/sonar.sh start"
+su - sonar -c "/opt/sonarqube/bin/linux-x86-64/sonar.sh start"
 
 
 
