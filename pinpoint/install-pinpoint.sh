@@ -47,4 +47,4 @@ su - tomcat -c "wget -O /opt/tomcat/webapps/collector.war https://github.com/nav
 
 sleep 10
 
-su -tomcat -c "/opt/tomcat/bin/startup.sh"
+su - tomcat -c "/opt/tomcat/bin/startup.sh"
