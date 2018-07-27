@@ -15,8 +15,8 @@ yum remove -y java
 
 yum install -y java-1.8.0-openjdk-devel
 
-groupadd -g 1000 jenkins
-useradd -u 1000 -g 1000 jenkins
+groupadd -g 1100 jenkins
+useradd -u 1100 -g 1100 jenkins
 
 echo "jenkins   ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
