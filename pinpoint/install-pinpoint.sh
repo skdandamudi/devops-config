@@ -10,8 +10,8 @@ yum remove -y java
 
 yum install -y java-1.8.0-openjdk-devel
 
-groupadd -g 1000 tomcat
-useradd -u 1000 -g 1000 tomcat
+groupadd -g 1009 tomcat
+useradd -u 1009 -g 1009 tomcat
 
 echo "tomcat   ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
