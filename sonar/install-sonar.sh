@@ -77,7 +77,7 @@ unzip /tmp/sonarqube-7.2.1.zip -d /opt
 
 mv /opt/sonarqube-7.2.1 /opt/sonarqube
 
-wget -O /opt/sonarqube/conf/sonar.properties  https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/sonar/pg_hba.conf
+wget -O /opt/sonarqube/conf/sonar.properties  https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/sonar/sonar.properties
 
 
 chown -R sonar:sonar /opt/sonarqube
