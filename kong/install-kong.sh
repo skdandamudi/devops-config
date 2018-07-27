@@ -14,13 +14,23 @@ yum install -y java-1.8.0-openjdk-devel
 echo '* soft nofile 65000' >> /etc/security/limits.conf
 echo '* hard nofile 65000' >> /etc/security/limits.conf
 
+
+echo 'Installing postgresql.....'
+
 rpm -Uvh https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-6-x86_64/pgdg-ami201503-95-9.5-3.noarch.rpm
+
+sleep 5
 
 yum -y install postgresql95  postgresql95-server
 
+echo 'Initialize  postgresql.....'
+
 service postgresql95 initdb
+sleep 3
 
 service postgresql95 start
+
+sleep 5
 
 
 
@@ -28,18 +38,25 @@ service postgresql95 start
 
 wget -O /tmp/pg.sql https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/pg.sql
 
+
+echo 'Create kong DB.....'
 sudo -u postgres psql -f /tmp/pg.sql
 
 
+s
 wget -O /tmp/pg_hba.conf https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/pg_hba.conf
 
 mv /tmp/pg_hba.conf /var/lib/pgsql95/data/pg_hba.conf
 chown postgres:postgres /var/lib/pgsql95/data/pg_hba.conf
 
 service postgresql95 stop
+
+sleep 5
 service postgresql95 start
 
 
+sleep 3
+echo 'Instaling kong .....'
 wget -O kong-community-edition-0.14.0.aws.rpm https://bintray.com/kong/kong-community-edition-aws/download_file?file_path=dists/kong-community-edition-0.14.0.aws.rpm
 
 
