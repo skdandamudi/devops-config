@@ -33,7 +33,9 @@ wget -O /tmp/hbase.tar.gz http://archive.apache.org/dist/hbase/1.2.6/hbase-1.2.6
 
 tar -xvf /tmp/hbase.tar.gz -C /opt/
  
-/opt/habse/start-hbase.sh
+export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk"
+
+/opt/hbase-1.2.6/bin/start-hbase.sh
 
 sleep 10
 
