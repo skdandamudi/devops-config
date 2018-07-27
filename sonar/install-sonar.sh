@@ -66,8 +66,8 @@ sleep 3
 
 echo 'Instaling Sonar .....'
 
-groupadd -g 1009 sonar
-useradd -u 1009 -g 1009 sonar
+groupadd -g 1100 sonar
+useradd -u 1100 -g 1100 sonar
 
 echo "sonar   ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
