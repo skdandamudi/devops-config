@@ -10,8 +10,8 @@ yum remove -y java
 
 yum install -y java-1.8.0-openjdk-devel
 
-groupadd -g 1000 keycloak
-useradd -u 1000 -g 1000 keycloak
+groupadd -g 1100 keycloak
+useradd -u 1100 -g 1100 keycloak
 
 echo "keycloak   ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
