@@ -46,3 +46,5 @@ sleep 10
 su - tomcat -c "wget -O /opt/tomcat/webapps/collector.war https://github.com/naver/pinpoint/releases/download/1.7.3/pinpoint-collector-1.7.3.war"
 
 sleep 10
+
+su -tomcat -c "/opt/tomcat/bin/startup.sh"
