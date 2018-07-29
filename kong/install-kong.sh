@@ -88,3 +88,4 @@ su - ec2-user -c "npm install forever -g"
 su - ec2-user -c "git clone https://github.com/pantsel/konga.git"
 su - ec2-user -c "cd konga; npm install; forever start app.js"
 
+su - ec2-user -c "npm install -g kong-dashboard"
