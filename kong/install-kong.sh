@@ -64,10 +64,10 @@ service postgresql-9.6 start
 
 sleep 3
 echo 'Instaling kong .....'
-wget -O kong-community-edition-0.14.0.aws.rpm https://bintray.com/kong/kong-community-edition-aws/download_file?file_path=dists/kong-community-edition-0.14.0.aws.rpm
+wget -O kong.aws.rpm https://bintray.com/kong/kong-community-edition-aws/download_file?file_path=dists/kong-community-edition-0.13.0.aws.rpm
 
 
-yum install -y kong-community-edition-0.14.0.aws.rpm --nogpgcheck
+yum install -y kong.aws.rpm --nogpgcheck
 
 wget -O /tmp/kong.conf.default https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/kong.conf.default
 mv /tmp/kong.conf.default /etc/kong/kong.conf.default
