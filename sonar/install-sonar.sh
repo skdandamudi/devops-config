@@ -26,14 +26,14 @@ yum -y install postgresql96-server postgresql96-contrib postgresql96
 
 echo 'Initialize  postgresql.....'
 
-systemctl enable postgresql-9.6.service
+chkconfig postgresql96 on
 
 
-service postgresql-9.6 initdb
+service postgresql96 initdb
 
 sleep 3
 
-service postgresql-9.6 start
+service postgresql96 start
 
 sleep 5
 
@@ -49,15 +49,16 @@ sudo -u postgres psql -f /tmp/pg.sql
 
 wget -O /tmp/pg_hba.conf https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/sonar/pg_hba.conf
 
-mv /tmp/pg_hba.conf /var/lib/pgsql/9.6/data/pg_hba.conf
+mv /tmp/pg_hba.conf /var/lib/pgsql96/data/pg_hba.conf
 
-chown postgres:postgres /var/lib/pgsql/9.6/data/pg_hba.conf
+chown postgres:postgres /var/lib/pgsql96/data/pg_hba.conf
 
-service postgresql-9.6 stop
+
+service postgresql96 stop
 
 sleep 5
 
-service postgresql-9.6 start
+service postgresql96 start
 
 
 sleep 3
