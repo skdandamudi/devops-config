@@ -13,15 +13,17 @@ yum remove -y java
 
 yum install -y java-1.8.0-openjdk-devel
 
+wget -O /etc/yum.repos.d/elasticsearch.repo  https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/elk/elasticsearch.repo
+wget -O /etc/yum.repos.d/kibana.repo  https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/elk/kibana.repo
+wget -O /etc/yum.repos.d/logstash.repo  https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/elk/logstash.repo
 
-wget -O /tmp/elasticsearch.rpm https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.3.2.rpm
-
-rpm --install /tmp/elasticsearch.rpm
+yum intall -y elasticsearch kibana logstash
 
 chkconfig --add elasticsearch
 
-wget  -O /tmp/kibana.rpm https://artifacts.elastic.co/downloads/kibana/kibana-6.3.2-x86_64.rpm
- 
-rpm --install /tmp/kibana.rpm
-
 chkconfig --add kibana
+
+chkconfig --add logstash
+
+service elasticsearch start
+
