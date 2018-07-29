@@ -45,10 +45,10 @@ wget -O /tmp/pg.sql https://raw.githubusercontent.com/navitastech-rfad/devops-co
 
 
 echo 'Create kong DB.....'
-sudo -u postgres psql -f /tmp/pg.sql
+sudo -u postgres psql -f /tmp/pg.sql > /tmp/pgsql.log
 
 
-s
+
 wget -O /tmp/pg_hba.conf https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/kong/pg_hba.conf
 
 mv /tmp/pg_hba.conf /var/lib/pgsql/9.6/data/pg_hba.conf
