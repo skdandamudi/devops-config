@@ -26,14 +26,14 @@ yum -y install postgresql96-server postgresql96-contrib postgresql96
 
 echo 'Initialize  postgresql.....'
 
-systemctl enable postgresql-9.6.service
+chkconfig postgresql96 on
 
 
-service postgresql-9.6 initdb
+service postgresql96 initdb
 
 sleep 3
 
-service postgresql-9.6 start
+service postgresql96 start
 
 sleep 5
 
