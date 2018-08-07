@@ -1,0 +1,5 @@
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker rm $(docker ps -a -f status=exited -f status=created -q)
+docker rm $(docker ps -a -f status=exited -q)
+docker rmi -f $(docker images -a -q)
