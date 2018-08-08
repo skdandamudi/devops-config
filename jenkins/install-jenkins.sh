@@ -122,3 +122,8 @@ curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-de
 chmod +x /usr/bin/ecs-deploy
 
 
+
+wget -O /tmp/clean-docker.sh https://raw.githubusercontent.com/navitastech-rfad/devops-config/master/scripts/clean-docker.sh
+chmod 755 /tmp/clean-docker.sh
+
+
