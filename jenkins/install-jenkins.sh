@@ -2,6 +2,11 @@
 
 set -o pipefail
 
+
+mkfs.ext4 /dev/sdf
+
+
+
 yum -y update
 yum -y install git openssh-client curl unzip bash ttf-dejavu coreutils tini gcc gcc-c++ make jq
 yum install -y epel-release wget openssl
@@ -24,8 +29,13 @@ echo "jenkins   ALL=(ALL:ALL) ALL" >> /etc/sudoers
 usermod -a -G docker jenkins
 #install software
 
+
 mkdir -p /opt/jenkins/bin
-mkdir -p /var/jenkins /var/jenkins/data /var/jenkins/logs /var/jenkins/data/plugins
+mkdir -p /var/jenkins 
+ 
+mount -t ext4 /dev/sdf /var/jenkins 
+
+mkdir -p /var/jenkins/data /var/jenkins/logs /var/jenkins/data/plugins
 
  
 
