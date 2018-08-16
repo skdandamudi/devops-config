@@ -128,3 +128,4 @@ github-autostatus
 jenkins-jira-issue-updater
 ghprb
 git-changelog
+sonar
