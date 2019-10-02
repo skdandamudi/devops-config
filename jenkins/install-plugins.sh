@@ -24,7 +24,7 @@ JENKINS_UC=https://updates.jenkins.io
 
 JENKINS_WAR=${JENKINS_WAR:-/opt/jenkins/jenkins.war}
 REF="/var/jenkins/data"
-. ./jenkins-support
+. /tmp/jenkins-support
  
 REF_DIR="${REF}/plugins"
 FAILED="$REF_DIR/failed-plugins.txt"
