@@ -21,6 +21,8 @@
 set -o pipefail
 
 JENKINS_UC=https://updates.jenkins.io
+JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental
+JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
 
 JENKINS_WAR=${JENKINS_WAR:-/opt/jenkins/jenkins.war}
 REF="/var/jenkins/data"
