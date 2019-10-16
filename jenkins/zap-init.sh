@@ -51,7 +51,9 @@ start_zap() {
         -daemon \
         -host ${ZAP_HOST} \
         -port ${ZAP_PORT} \
-        -config api.disablekey=true >> $ZAP_LOG 2>&1 &
+        -config api.disablekey=true \
+        -config api.addrs.addr.name=.* \
+        -config api.addrs.addr.regex=true>> $ZAP_LOG 2>&1 &
     sleep 2
     while [ -z "$(tail -n 2 $ZAP_LOG | grep 'ZAP is now listening')" ]; do
         timeout=$(( timeout + 1 ))
